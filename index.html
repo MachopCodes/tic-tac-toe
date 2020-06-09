@@ -1,17 +1,78 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title class="main font">Tic-Tac-Toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
-
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
-    </body>
-</html>
+      <main class="container">
+        <h1>Tic Tac Toe</h1>
+        <p id="message"></p>
+        <div class="row">
+          <div class="col">
+            <section id = "sign-out">
+              <form id = "sign-out-form">
+                <button type = "click"> sign out </button>
+              </form>
+            </section>
+          </div>
+          <div class="col-8">
+            <section id = "signup">
+              <form id = "signup-form">
+                <input required type = "text" placeholder = "email" name = "credentials[email]">
+                <input required type = "text" placeholder = "password" name = "credentials[password]">
+                <input required type = "text" placeholder = "confirm password" name = "credentials[password_confirmation]">
+                <button type="submit">Sign Up</button>
+              </form>
+            </section>
+          </div>
+        </div>
+
+          <div class="row">
+            <div class="col">
+              <section id = "change-password">
+                <form id = "change-password-form">
+                  <button type = "submit"> change password </button>
+                  <input required type = "text" placeholder = "old password" name = passwords[old]>
+                  <input required type = "text" placeholder = "new password" name = passwords[new]>
+
+                </form>
+              </section>
+            </div>
+            <div class="col">
+              <section id = "sign-in">
+                <form id = "sign-in-form">
+                  <input required type = "text" placeholder = "email" name = "credentials[email]">
+                  <input required type = "text" placeholder = "password" name = "credentials[password]">
+                  <button type="submit">Sign In</button>
+                </form>
+              </section>
+            </div>
+          </div>
+            <table>
+              <br>
+              <br>
+              <tr>
+                <td id="c1"></td>
+                <td id="c2"></td>
+                <td id="c3"></td>
+              </tr>
+              <tr>
+                <td id="c4"></td>
+                <td id="c5"></td>
+                <td id="c6"></td>
+              </tr>
+              <tr>
+                <td id="c7"></td>
+                <td id="c8"></td>
+                <td id="c9"></td>
+              </tr>
+            </table>
+          </main>
+            </body>
+            </html>
