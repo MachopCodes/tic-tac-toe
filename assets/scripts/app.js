@@ -1,11 +1,16 @@
 'use strict'
 
-// use require with a reference to bundle the file and use it in this file
-// const example = require('./example')
+const events = require('./events')
 
-// use require without a reference to ensure a file is bundled
-// require('./example')
+let turnCount = 0
 
 $(() => {
-  // your JS code goes here
+    $('#sign-out-form').on('click', events.onSignOut)
+    $('#signup-form').on('submit', events.onSignUp)
+    $('#change-password-form').on('submit', events.onChangePassword)
+    $('#sign-in-form').on('submit', events.onSignIn)
+    $('#new-game-form').on('submit', events.onNewGame)
+    $('#index-game-form').on('submit', events.onIndexGame)
+    $('#show-game-form').on('submit', events.onShowGame)
+    $('#tic').on('click', events.onGameUpdate)
 })
