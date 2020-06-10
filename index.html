@@ -10,69 +10,83 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <main class="container">
-        <h1>Tic Tac Toe</h1>
-        <p id="message"></p>
-        <div class="row">
-          <div class="col">
-            <section id = "sign-out">
-              <form id = "sign-out-form">
-                <button type = "click"> sign out </button>
-              </form>
-            </section>
-          </div>
-          <div class="col-8">
-            <section id = "signup">
-              <form id = "signup-form">
-                <input required type = "text" placeholder = "email" name = "credentials[email]">
-                <input required type = "text" placeholder = "password" name = "credentials[password]">
-                <input required type = "text" placeholder = "confirm password" name = "credentials[password_confirmation]">
-                <button type="submit">Sign Up</button>
-              </form>
-            </section>
-          </div>
+    <main class="container">
+    <h1>Tic Tac Toe</h1>
+      <p id="message"></p>
+      <div class="row">
+
+        <div class="col-2">
+          <section id = "sign-out">
+            <form id = "sign-out-form">
+              <button type = "click"> Sign Out </button>
+            </form>
+          </section>
+          <section id = "new-game">
+            <form id = "new-game-form">
+              <button type="submit">New Game</button>
+            </form>
+          </section>
+          <section id = "index-games">
+            <form id = "index-game-form">
+              <button type="submit">Show All Games</button>
+            </form>
+          </section>
+          <section id = "show-games">
+            <form id = "show-game-form">
+              <button type="submit">Show a Game</button>
+              <input required type = "text" placeholder = "game_id" name = "credentials[_id]">
+            </form>
+          </section>
         </div>
 
-          <div class="row">
-            <div class="col">
-              <section id = "change-password">
-                <form id = "change-password-form">
-                  <button type = "submit"> change password </button>
-                  <input required type = "text" placeholder = "old password" name = passwords[old]>
-                  <input required type = "text" placeholder = "new password" name = passwords[new]>
+        <div class="col-3">
+          <section id = "signup">
+            <form id = "signup-form">
+              <button type="submit">Sign Up</button>
+              <input required type = "text" placeholder = "email" name = "credentials[email]">
+              <input required type = "text" placeholder = "password" name = "credentials[password]">
+              <input required type = "text" placeholder = "confirm password" name = "credentials[password_confirmation]">
+            </form>
+          </section>
+        </div>
 
-                </form>
-              </section>
-            </div>
-            <div class="col">
-              <section id = "sign-in">
-                <form id = "sign-in-form">
-                  <input required type = "text" placeholder = "email" name = "credentials[email]">
-                  <input required type = "text" placeholder = "password" name = "credentials[password]">
-                  <button type="submit">Sign In</button>
-                </form>
-              </section>
-            </div>
+        <div class="col-3">
+          <section id = "change-password">
+            <form id = "change-password-form">
+              <button type = "submit"> change password </button>
+              <input required type = "text" placeholder = "old password" name = passwords[old]>
+              <input required type = "text" placeholder = "new password" name = passwords[new]>
+            </form>
+          </section>
+        </div>
+
+        <div class="col-3">
+          <section id = "sign-in">
+            <form id = "sign-in-form">
+              <button type="submit">Sign In</button>
+              <input required type = "text" placeholder = "email" name = "credentials[email]">
+              <input required type = "text" placeholder = "password" name = "credentials[password]">
+            </form>
+          </section>
+        </div>
+      </div>
+        <section id="game-content"></section>
+      <br>
+        <div class="row">
+          <div class="col-6">X</div>
+          <div class="col-6">O</div>
+        </div>
+          <div id="tic" class="row">
+            <div id="c1" class="col-4" data-cell-index='0'></div>
+            <div id="c2" class="col-4" data-cell-index='1'></div>
+            <div id="c3" class="col-4" data-cell-index='2'></div>
+            <div id="c4" class="col-4" data-cell-index='3'></div>
+            <div id="c5" class="col-4" data-cell-index='4'></div>
+            <div id="c6" class="col-4" data-cell-index='5'></div>
+            <div id="c7" class="col-4" data-cell-index='6'></div>
+            <div id="c8" class="col-4" data-cell-index='7'></div>
+            <div id="c9" class="col-4" data-cell-index='8'></div>
           </div>
-            <table>
-              <br>
-              <br>
-              <tr>
-                <td id="c1"></td>
-                <td id="c2"></td>
-                <td id="c3"></td>
-              </tr>
-              <tr>
-                <td id="c4"></td>
-                <td id="c5"></td>
-                <td id="c6"></td>
-              </tr>
-              <tr>
-                <td id="c7"></td>
-                <td id="c8"></td>
-                <td id="c9"></td>
-              </tr>
-            </table>
-          </main>
-            </body>
-            </html>
+        </main>
+      </body>
+    </html>

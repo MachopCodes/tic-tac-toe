@@ -1,5 +1,5 @@
 'use strict'
-const store = require('./../store')
+const store = require('./store')
 
 const signUpSuccess = function(response) {
   console.log(response)
@@ -37,6 +37,40 @@ const signOutFailure = function() {
   $('#message').text(`sign out failed`)
   $('form').trigger('reset')
 }
+const createGameSuccess = function(data) {
+  $('#message').text(`new game initiated, good luck!`)
+  $('form').trigger('reset')
+  console.log(data)
+  store.game = data.game
+}
+const createGameFailure = function() {
+  $('#message').text(`create game failed`)
+  $('form').trigger('reset')
+}
+const indexGameSuccess = function(response) {
+  console.log(response.games)
+  let data = response.games
+  let gameHtml = ''
+  data.forEach(game => {
+    const oneGame = (`
+      <h4>id: ${game._id}</h4>`)
+      gameHtml += oneGame
+  })
+  $('#game-content').html(gameHtml)
+}
+const indexGameFailure = function() {
+  $('#message').text('Index failed!')
+}
+const showGameSuccess = function(data) {
+  console.log(data)
+  const gameHTML = (`
+    <h4>Title: ${data.game._id},
+    <p>Cells</p> ${data.game.cells}`)
+    $('#game-display').html(gameHTML)
+}
+const showGameFailure = function() {
+  $('#message').text('show game failed!')
+}
 
 module.exports = {
   signOutSuccess,
@@ -46,5 +80,12 @@ module.exports = {
   signInSuccess,
   signInFailure,
   signUpSuccess,
-  signUpFailure
+  signUpFailure,
+  createGameSuccess,
+  createGameFailure,
+  indexGameSuccess,
+  indexGameFailure,
+  showGameSuccess,
+  showGameFailure
+
 }
