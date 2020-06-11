@@ -45,6 +45,9 @@ const onSignOut = function(event) {
 const onNewGame = function(event) {
   event.preventDefault()
   currentPlayer = "X"
+  gameOver = false
+  winner = ""
+
   const data = getFormFields(event.target)
   api.userCreateGame(data)
     .then(ui.createGameSuccess)
@@ -72,12 +75,14 @@ const onGameUpdate = function(event) {
   turnChecker(i)
   gameChecker(i)
   api.userUpdateGame(i, currentPlayer, gameOver)
-    .then(ui.updateGameSuccess(event, currentPlayer, gameOver, winner))
+    .then(ui.updateGameSuccess(event, currentPlayer, i, gameOver, winner))
     .catch(ui.updateGameFailure)
 }
 const onGameReset = function(event) {
   event.preventDefault()
   currentPlayer = "X"
+  gameOver = false
+  winner = ""
   const data = getFormFields(event.target)
   console.log(data)
   api.userResetGame(data)
@@ -85,19 +90,26 @@ const onGameReset = function(event) {
     .catch(ui.resetGameFailure)
 }
 const turnChecker = function(i) {
-  if(store.game.cells[i] === "") {
+  if(store.game.cells[i] === "" && !gameOver) {
     store.game.cells[i] = currentPlayer
-    if(currentPlayer === "X") {
-      currentPlayer = "O"
+    if(currentPlayer==="X") {
+      currentPlayer="O"
     } else {
-      currentPlayer = "X"
+      currentPlayer="X"
     }
+  } else if (store.game.cells[i] === "" && gameOver) {
+    console.log("game over no more moves")
+  } else if (store.game.cells[i] !== "") {
+    console.log("invalid space")
+  } else {
+    console.log("invalid move")
   }
 }
+
 const gameChecker = function(i) {
   console.log(store.game.cells[i])
   if( store.game.cells[i]===store.game.cells[0] && store.game.cells[0]===store.game.cells[1] && store.game.cells[1]===store.game.cells[2] || store.game.cells[i]===store.game.cells[3] && store.game.cells[3]===store.game.cells[4] && store.game.cells[4]===store.game.cells[5] || store.game.cells[i]===store.game.cells[6] && store.game.cells[6]===store.game.cells[7] && store.game.cells[7]===store.game.cells[8] || store.game.cells[i]===store.game.cells[0] && store.game.cells[0]===store.game.cells[4] && store.game.cells[4]===store.game.cells[8] || store.game.cells[i]===store.game.cells[2] && store.game.cells[2]===store.game.cells[4] && store.game.cells[4]===store.game.cells[6] || store.game.cells[i]===store.game.cells[0] && store.game.cells[0]===store.game.cells[3] && store.game.cells[3]===store.game.cells[6] || store.game.cells[i]===store.game.cells[1] && store.game.cells[1]===store.game.cells[4] && store.game.cells[4]===store.game.cells[7] || store.game.cells[i]===store.game.cells[2] && store.game.cells[2]===store.game.cells[5] && store.game.cells[5]===store.game.cells[8] ) {
-    gameOver
+    gameOver = true
     if(store.game.cells[i]==="X") {
       winner = "X wins!"
       console.log("x wins!")

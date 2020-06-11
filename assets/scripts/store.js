@@ -3,4 +3,12 @@
 const store = {
 }
 
-module.exports = store
+const xWins = []
+const oWins = []
+
+
+module.exports = {
+  store,
+  xWins,
+  oWins
+}

@@ -91,14 +91,14 @@ const showGameSuccess = function(response) {
 const showGameFailure = function() {
   $('#message').text('show game failed!')
 }
-const updateGameSuccess = function(event, currentPlayer, gameOver, winner) {
-  if($(event.target).html()==="" && !gameOver) {
-    $(event.target).html(currentPlayer)
-    $('#game-content').text(currentPlayer + 'is up!')
+const updateGameSuccess = function(event, currentPlayer, i, gameOver, winner) {
+  if($(event.target).html()==="" && !gameOver){
+    $(event.target).html(store.game.cells[i])
+    $('#game-content').text(currentPlayer + ' is up! ' + winner)
   } else if ($(event.target).html() !=="" && !gameOver) {
     $('#game-content').text('somebody already put a piece there!')
-  } else if (gameOver && $(event.target).html()==="") {
-    $(event.target).html(currentPlayer)
+  } else if ($(event.target).html()==="" && gameOver) {
+    $(event.target).html(store.game.cells[i])
     $('#game-content').text(winner)
   } else {
     $('#game-content').text("invalid!")

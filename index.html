@@ -2,91 +2,80 @@
 <html>
     <head>
       <title class="main font">Tic-Tac-Toe</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
       <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+        <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+        <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-    <main class="container">
-    <h1>Tic Tac Toe</h1>
+      <h1>Tic Tac Toe</h1>
       <p id="message"></p>
-      <div class="row">
-
-        <div class="col-2">
-          <section id = "sign-out">
-            <form id = "sign-out-form">
-              <button type = "click"> Sign Out </button>
-            </form>
-          </section>
-          <section id = "new-game">
-            <form id = "new-game-form">
-              <button type="submit">New Game</button>
-            </form>
-          </section>
-          <section id = "index-games">
-            <form id = "index-game-form">
-              <button type="submit">Show All Games</button>
-            </form>
-          </section>
-          <section id = "show-games">
-            <form id = "show-game-form">
-              <button type="submit">Show a Game</button>
-              <input required type = "text" placeholder = "game_id" name = "credentials[_id]">
-            </form>
-          </section>
-        </div>
-
-        <div class="col-3">
-          <section id = "signup">
-            <form id = "signup-form">
-              <button type="submit">Sign Up</button>
-              <input required type = "text" placeholder = "email" name = "credentials[email]">
-              <input required type = "text" placeholder = "password" name = "credentials[password]">
-              <input required type = "text" placeholder = "confirm password" name = "credentials[password_confirmation]">
-            </form>
-          </section>
-        </div>
-
-        <div class="col-3">
-          <section id = "change-password">
-            <form id = "change-password-form">
-              <button type = "submit"> change password </button>
-              <input required type = "text" placeholder = "old password" name = passwords[old]>
-              <input required type = "text" placeholder = "new password" name = passwords[new]>
-            </form>
-          </section>
-        </div>
-
-        <div class="col-3">
-          <section id = "sign-in">
-            <form id = "sign-in-form">
-              <button type="submit">Sign In</button>
-              <input required type = "text" placeholder = "email" name = "credentials[email]">
-              <input required type = "text" placeholder = "password" name = "credentials[password]">
-            </form>
-          </section>
-        </div>
-      </div>
+        <section id = "sign-out">
+          <form id = "sign-out-form">
+            <button type = "click"> Sign Out </button>
+          </form>
+        </section>
+        <section id = "new-game">
+          <form id = "new-game-form">
+            <button type="submit">New Game</button>
+          </form>
+        </section>
+        <section id = "index-games">
+          <form id = "index-game-form">
+            <button type="submit">Show All Games</button>
+          </form>
+        </section>
+        <section id = "show-games">
+          <form id = "show-game-form">
+            <button type="submit">Show a Game</button>
+            <input required type = "text" placeholder = "game_id" name = "games[_id]">
+          </form>
+        </section>
+        <section id = "change-password">
+          <form id = "change-password-form">
+            <button type = "submit"> change password </button>
+            <input required type = "text" placeholder = "old password" name = passwords[old]>
+            <input required type = "text" placeholder = "new password" name = passwords[new]>
+          </form>
+        </section>
+        <section id = "sign-in">
+          <form id = "sign-in-form">
+            <button type="submit">Sign In</button>
+            <input required type = "text" placeholder = "email" name = "credentials[email]">
+            <input required type = "text" placeholder = "password" name = "credentials[password]">
+          </form>
+        </section>
+        <section id = "signup">
+          <form id = "signup-form">
+            <button type="submit">Sign Up</button>
+            <input required type = "text" placeholder = "email" name = "credentials[email]">
+            <input required type = "text" placeholder = "password" name = "credentials[password]">
+            <input required type = "text" placeholder = "confirm password" name = "credentials[password_confirmation]">
+          </form>
+        </section>
+        <section id = "reset">
+          <form id = "reset-button">
+            <button type="submit">Reset</button>
+          </form>
+        </section>
         <section id="game-content"></section>
-      <br>
-        <div class="row">
-          <div class="col-6">X</div>
-          <div class="col-6">O</div>
+        <br>
+        <br>
+      <section class="container">
+        <div class="row h300 board">
+          <div class="col-4 box" data-cell-index='0'></div>
+          <div class="col-4 box" data-cell-index='1'></div>
+          <div class="col-4 box" data-cell-index='2'></div>
+          <div class="col-4 box" data-cell-index='3'></div>
+          <div class="col-4 box" data-cell-index='4'></div>
+          <div class="col-4 box" data-cell-index='5'></div>
+          <div class="col-4 box" data-cell-index='6'></div>
+          <div class="col-4 box" data-cell-index='7'></div>
+          <div class="col-4 box" data-cell-index='8'></div>
         </div>
-          <div id="tic" class="row">
-            <div id="c1" class="col-4" data-cell-index='0'></div>
-            <div id="c2" class="col-4" data-cell-index='1'></div>
-            <div id="c3" class="col-4" data-cell-index='2'></div>
-            <div id="c4" class="col-4" data-cell-index='3'></div>
-            <div id="c5" class="col-4" data-cell-index='4'></div>
-            <div id="c6" class="col-4" data-cell-index='5'></div>
-            <div id="c7" class="col-4" data-cell-index='6'></div>
-            <div id="c8" class="col-4" data-cell-index='7'></div>
-            <div id="c9" class="col-4" data-cell-index='8'></div>
-          </div>
-        </main>
-      </body>
-    </html>
+      </section>
+
+    </body>
+  </html>
