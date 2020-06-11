@@ -1,6 +1,6 @@
 'use strict'
 const store = require('./store')
-let currentPlayer = "X"
+const events = require('./events')
 
 
 const signUpSuccess = function(response) {
@@ -16,8 +16,17 @@ const signUpFailure = function() {
 const signInSuccess = function(response) {
   console.log(response)
   $('#message').text(`Welcome ${response.user.email}!!`)
-  $('form').trigger('reset')
   store.user = response.user
+  $('form').trigger('reset')
+  $('#sign-out').show()
+  $('#new-game').show()
+  $('#index-games').show()
+  $('#show-games').show()
+  $('#change-password').show()
+  $('#reset').show()
+  $('#sign-in').hide()
+  $('#signup').hide()
+
 }
 const signInFailure = function() {
   $('#message').text('Login failed :(')
@@ -34,6 +43,13 @@ const changeFailure = function() {
 const signOutSuccess = function() {
   $('#message').text(`see you later!`)
   $('form').trigger('reset')
+  $('#sign-out').hide()
+  $('#new-game').hide()
+  $('#index-games').hide()
+  $('#show-games').hide()
+  $('#change-password').hide()
+  $('#sign-in').show()
+  $('#signup').show()
 }
 const signOutFailure = function() {
   $('#message').text(`sign out failed`)
@@ -42,11 +58,11 @@ const signOutFailure = function() {
 const createGameSuccess = function(data) {
   $('#message').text(`new game initiated, good luck!`)
   $('form').trigger('reset')
-  $('#game-board').show()
+  $('.container').show()
+  $('.box').html('')
+  $('#game-content').html('')
   console.log(data)
   store.game = data.game
-  store.turnCount = 1
-  console.log(store.turnCount)
 }
 const createGameFailure = function() {
   $('#message').text(`create game failed`)
@@ -75,17 +91,29 @@ const showGameSuccess = function(response) {
 const showGameFailure = function() {
   $('#message').text('show game failed!')
 }
-const updateGameSuccess = function(event) {
-  $(event.target).html(currentPlayer)
-  if(currentPlayer==="X"){
-    currentPlayer="O"
+const updateGameSuccess = function(event, currentPlayer, previousPlayer, gameOver, winner) {
+  if($(event.target).html()==="" && !gameOver){
+    $(event.target).html(previousPlayer)
+    $('#game-content').text(previousPlayer + 'is up!')
+  } else if ($(event.target).html() !=="" && !gameOver) {
+    $('#game-content').text('somebody already put a piece there!')
+  } else if (gameOver && $(event.target).html()==="") {
+    $(event.target).html(currentPlayer)
+    $('#game-content').text(winner)
   } else {
-    currentPlayer="X"
+    $('#game-content').text("invalid!")
   }
 }
 
 const updateGameFailure = function() {
   $('#message').text('update failed :(')
+}
+const resetGameSuccess = function() {
+  $('#message').text('game reset')
+  $('.box').html('')
+}
+const resetGameFailure = function() {
+  $('#message').text('game reset failure')
 }
 
 module.exports = {
@@ -104,5 +132,7 @@ module.exports = {
   showGameSuccess,
   showGameFailure,
   updateGameSuccess,
-  updateGameFailure
+  updateGameFailure,
+  resetGameSuccess,
+  resetGameFailure
 }

@@ -67,7 +67,7 @@ const userShowGame = function(data) {
     }
   })
 }
-const userUpdateGame = function(index, currentPlayer) {
+const userUpdateGame = function(i, currentPlayer) {
   return $.ajax({
     url: config.apiUrl + "/games/" + store.game._id,
     method: 'PATCH',
@@ -77,11 +77,20 @@ const userUpdateGame = function(index, currentPlayer) {
     data: {
       game: {
         cell: {
-          index: index,
+          index: i,
           value: currentPlayer
         },
         over: events.gameOver
       }
+    }
+  })
+}
+const userResetGame = function(data) {
+  return $.ajax({
+    url: config.apiUrl + "/games/" + store.game._id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
     }
   })
 }
@@ -94,5 +103,6 @@ module.exports = {
   userCreateGame,
   userIndexGame,
   userShowGame,
-  userUpdateGame
+  userUpdateGame,
+  userResetGame
 }
