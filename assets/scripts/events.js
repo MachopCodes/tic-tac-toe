@@ -6,7 +6,6 @@ const ui = require('./ui')
 const store = require('./store')
 
 let currentPlayer = "X"
-let previousPlayer = ""
 let gameOver = false
 let winner = ""
 
@@ -46,6 +45,8 @@ const onSignOut = function(event) {
 const onNewGame = function(event) {
   event.preventDefault()
   currentPlayer = "X"
+  gameOver = false
+  winner = ""
   const data = getFormFields(event.target)
   api.userCreateGame(data)
     .then(ui.createGameSuccess)
@@ -72,36 +73,38 @@ const onGameUpdate = function(event) {
   let i = $(event.target).attr("data-cell-index")
   turnChecker(i)
   gameChecker(i)
-  console.log("current player is " + currentPlayer)
-  console.log(store.game.cells)
-  console.log("winner is " + winner)
-  console.log("game over is " + gameOver)
   api.userUpdateGame(i, currentPlayer, gameOver)
-    .then(ui.updateGameSuccess(event, currentPlayer, previousPlayer, gameOver, winner))
+    .then(ui.updateGameSuccess(event, currentPlayer, i, gameOver, winner))
     .catch(ui.updateGameFailure)
 }
 const onGameReset = function(event) {
   event.preventDefault()
   currentPlayer = "X"
+  gameOver = false
+  winner = ""
   const data = getFormFields(event.target)
   console.log(data)
   api.userResetGame(data)
     .then(ui.resetGameSuccess)
     .catch(ui.resetGameFailure)
 }
-
 const turnChecker = function(i) {
-  if(store.game.cells[i] === "") {
+  if(store.game.cells[i] === "" && !gameOver) {
     store.game.cells[i] = currentPlayer
-    if(currentPlayer === "X") {
-      currentPlayer = "O"
-      previousPlayer = "X"
+    if(currentPlayer==="X") {
+      currentPlayer="O"
     } else {
-      currentPlayer = "X"
-      previousPlayer = "O"
+      currentPlayer="X"
     }
+  } else if (store.game.cells[i] === "" && gameOver) {
+    console.log("game over no more moves")
+  } else if (store.game.cells[i] !== "") {
+    console.log("invalid space")
+  } else {
+    console.log("invalid move")
   }
 }
+
 const gameChecker = function(i) {
   console.log(store.game.cells[i])
   if( store.game.cells[i]===store.game.cells[0] && store.game.cells[0]===store.game.cells[1] && store.game.cells[1]===store.game.cells[2] || store.game.cells[i]===store.game.cells[3] && store.game.cells[3]===store.game.cells[4] && store.game.cells[4]===store.game.cells[5] || store.game.cells[i]===store.game.cells[6] && store.game.cells[6]===store.game.cells[7] && store.game.cells[7]===store.game.cells[8] || store.game.cells[i]===store.game.cells[0] && store.game.cells[0]===store.game.cells[4] && store.game.cells[4]===store.game.cells[8] || store.game.cells[i]===store.game.cells[2] && store.game.cells[2]===store.game.cells[4] && store.game.cells[4]===store.game.cells[6] || store.game.cells[i]===store.game.cells[0] && store.game.cells[0]===store.game.cells[3] && store.game.cells[3]===store.game.cells[6] || store.game.cells[i]===store.game.cells[1] && store.game.cells[1]===store.game.cells[4] && store.game.cells[4]===store.game.cells[7] || store.game.cells[i]===store.game.cells[2] && store.game.cells[2]===store.game.cells[5] && store.game.cells[5]===store.game.cells[8] ) {
@@ -146,7 +149,6 @@ module.exports = {
   onGameUpdate,
   onGameReset,
   currentPlayer,
-  previousPlayer,
   gameOver,
   winner
 }
