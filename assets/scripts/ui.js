@@ -1,5 +1,7 @@
 'use strict'
 const store = require('./store')
+const events = require('./events')
+
 
 const signUpSuccess = function(response) {
   console.log(response)
@@ -14,8 +16,17 @@ const signUpFailure = function() {
 const signInSuccess = function(response) {
   console.log(response)
   $('#message').text(`Welcome ${response.user.email}!!`)
-  $('form').trigger('reset')
   store.user = response.user
+  $('form').trigger('reset')
+  $('#sign-out').show()
+  $('#new-game').show()
+  $('#index-games').show()
+  $('#show-games').show()
+  $('#change-password').show()
+  $('#reset').show()
+  $('#sign-in').hide()
+  $('#signup').hide()
+
 }
 const signInFailure = function() {
   $('#message').text('Login failed :(')
@@ -32,6 +43,13 @@ const changeFailure = function() {
 const signOutSuccess = function() {
   $('#message').text(`see you later!`)
   $('form').trigger('reset')
+  $('#sign-out').hide()
+  $('#new-game').hide()
+  $('#index-games').hide()
+  $('#show-games').hide()
+  $('#change-password').hide()
+  $('#sign-in').show()
+  $('#signup').show()
 }
 const signOutFailure = function() {
   $('#message').text(`sign out failed`)
@@ -40,6 +58,9 @@ const signOutFailure = function() {
 const createGameSuccess = function(data) {
   $('#message').text(`new game initiated, good luck!`)
   $('form').trigger('reset')
+  $('.container').show()
+  $('.box').html('')
+  $('#game-content').html('')
   console.log(data)
   store.game = data.game
 }
@@ -61,15 +82,38 @@ const indexGameSuccess = function(response) {
 const indexGameFailure = function() {
   $('#message').text('Index failed!')
 }
-const showGameSuccess = function(data) {
-  console.log(data)
-  const gameHTML = (`
-    <h4>Title: ${data.game._id},
-    <p>Cells</p> ${data.game.cells}`)
-    $('#game-display').html(gameHTML)
+const showGameSuccess = function(response) {
+  let game = response.game[0]
+  let gameHTML = `<h4>cells: ${game.cells}`
+  $('#game-content').html(gameHTML)
+  $('form').trigger('reset')
 }
 const showGameFailure = function() {
   $('#message').text('show game failed!')
+}
+const updateGameSuccess = function(event, currentPlayer, gameOver, winner) {
+  if($(event.target).html()==="" && !gameOver) {
+    $(event.target).html(currentPlayer)
+    $('#game-content').text(currentPlayer + 'is up!')
+  } else if ($(event.target).html() !=="" && !gameOver) {
+    $('#game-content').text('somebody already put a piece there!')
+  } else if (gameOver && $(event.target).html()==="") {
+    $(event.target).html(currentPlayer)
+    $('#game-content').text(winner)
+  } else {
+    $('#game-content').text("invalid!")
+  }
+}
+
+const updateGameFailure = function() {
+  $('#message').text('update failed :(')
+}
+const resetGameSuccess = function() {
+  $('#message').text('game reset')
+  $('.box').html('')
+}
+const resetGameFailure = function() {
+  $('#message').text('game reset failure')
 }
 
 module.exports = {
@@ -86,6 +130,9 @@ module.exports = {
   indexGameSuccess,
   indexGameFailure,
   showGameSuccess,
-  showGameFailure
-
+  showGameFailure,
+  updateGameSuccess,
+  updateGameFailure,
+  resetGameSuccess,
+  resetGameFailure
 }
