@@ -3,6 +3,11 @@
 const getFormFields = require('./../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
+const store = require('./store')
+
+let currentPlayer = "X"
+let gameOver = false
+
 
 const onSignUp = function(form) {
   event.preventDefault()
@@ -39,6 +44,7 @@ const onSignOut = function(event) {
 
 const onNewGame = function(event) {
   event.preventDefault()
+  currentPlayer = "X"
   const data = getFormFields(event.target)
   api.userCreateGame(data)
     .then(ui.createGameSuccess)
@@ -52,26 +58,54 @@ const onIndexGame = function(event) {
     .then(ui.indexGameSuccess)
     .catch(ui.indexGameFailure)
 }
-const onGameUpdate = function(event) {
-  event.preventDefault()
-  const data = getFormFields(event.target)
-  api.userUpdateGame(data)
-    .then(ui.updateGameSuccess)
-    .catch(ui.updateGameFailure)
-  // var str = event.target.id
-  // var short = str.substring(1,2)
-  // console.log(short)
-  return $(`#${event.target.id}`).html("X")
-}
 const onShowGame = function(event) {
   event.preventDefault()
   const data = getFormFields(event.target)
+  console.log(data)
   api.userShowGame(data)
     .then(ui.showGameSuccess)
     .catch(ui.showGameFailure)
 }
+const onGameUpdate = function(event) {
+  event.preventDefault()
+  let index = $(event.target).attr("data-cell-index")
+  api.userUpdateGame(index, currentPlayer, gameOver)
+  .then(ui.updateGameSuccess(event))
+  .catch(ui.updateGameFailure)
+  turnChecker(index)
+  gameChecker(index)
+}
 
-//let's write our function to print out ever Id of any element clicked
+const turnChecker = function(index) {
+  if(store.game.cells[index] !== "") {
+    console.log("invalid space")
+  } else {
+    store.game.cells[index] = currentPlayer
+    if(currentPlayer === "X"){
+      currentPlayer = "O"
+    } else {
+      currentPlayer = "X"
+    }
+  }
+  console.log(store.game.cells)
+}
+const gameChecker = function(index) {
+  console.log(store.game.cells[index])
+  if( store.game.cells[index]===store.game.cells[0] && store.game.cells[0]===store.game.cells[1] && store.game.cells[1]===store.game.cells[2] || store.game.cells[index]===store.game.cells[3] && store.game.cells[3]===store.game.cells[4] && store.game.cells[4]===store.game.cells[5] || store.game.cells[index]===store.game.cells[6] && store.game.cells[6]===store.game.cells[7] && store.game.cells[7]===store.game.cells[8] || store.game.cells[index]===store.game.cells[0] && store.game.cells[0]===store.game.cells[4] && store.game.cells[4]===store.game.cells[8] || store.game.cells[index]===store.game.cells[2] && store.game.cells[2]===store.game.cells[4] && store.game.cells[4]===store.game.cells[6] || store.game.cells[index]===store.game.cells[0] && store.game.cells[0]===store.game.cells[3] && store.game.cells[3]===store.game.cells[6] || store.game.cells[index]===store.game.cells[1] && store.game.cells[1]===store.game.cells[4] && store.game.cells[4]===store.game.cells[7] || store.game.cells[index]===store.game.cells[2] && store.game.cells[2]===store.game.cells[5] && store.game.cells[5]===store.game.cells[8] ) {
+    gameOver = true
+    if(currentPlayer="X") {
+      $('#message').html("Game Over X wins!")
+    } else {
+      $('#message').html("Game Over O wins!")
+    }
+  }
+}
+
+
+
+
+
+
 
 
 module.exports = {
@@ -81,6 +115,6 @@ module.exports = {
   onSignIn,
   onNewGame,
   onIndexGame,
+  onShowGame,
   onGameUpdate
-
 }

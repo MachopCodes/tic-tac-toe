@@ -2,9 +2,9 @@
 
 const events = require('./events')
 
-let turnCount = 0
 
 $(() => {
+    $('#game-board').hide()
     $('#sign-out-form').on('click', events.onSignOut)
     $('#signup-form').on('submit', events.onSignUp)
     $('#change-password-form').on('submit', events.onChangePassword)
@@ -12,5 +12,5 @@ $(() => {
     $('#new-game-form').on('submit', events.onNewGame)
     $('#index-game-form').on('submit', events.onIndexGame)
     $('#show-game-form').on('submit', events.onShowGame)
-    $('#tic').on('click', events.onGameUpdate)
+    $('#game-board').on('click', events.onGameUpdate)
 })

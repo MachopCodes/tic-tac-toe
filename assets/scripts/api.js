@@ -2,6 +2,7 @@
 
 const config = require('./config')
 const store = require('./store')
+const events = require('./events')
 
 const addUser = function(data){
   return $.ajax({
@@ -36,6 +37,7 @@ const userSignOut = function(data) {
     }
   })
 }
+
 const userCreateGame = function(data){
   return $.ajax({
     url: config.apiUrl + '/games',
@@ -46,7 +48,6 @@ const userCreateGame = function(data){
     data
   })
 }
-
 const userIndexGame = function(data) {
   return $.ajax({
     url: config.apiUrl + '/games',
@@ -60,21 +61,30 @@ const userIndexGame = function(data) {
 const userShowGame = function(data) {
   return $.ajax({
     url: config.apiUrl + '/games/' + data.games._id,
-    method: 'GET'
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
-
-
-
-
-
-const userGameUpdate = function(data) {
+const userUpdateGame = function(index, currentPlayer) {
   return $.ajax({
-    url: config.apiUrl + "/games"
+    url: config.apiUrl + "/games/" + store.game._id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: index,
+          value: currentPlayer
+        },
+        over: events.gameOver
+      }
+    }
   })
 }
-
-
 
 module.exports = {
   addUser,
@@ -83,5 +93,6 @@ module.exports = {
   userSignOut,
   userCreateGame,
   userIndexGame,
-  userGameUpdate
+  userShowGame,
+  userUpdateGame
 }

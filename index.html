@@ -34,7 +34,7 @@
           <section id = "show-games">
             <form id = "show-game-form">
               <button type="submit">Show a Game</button>
-              <input required type = "text" placeholder = "game_id" name = "credentials[_id]">
+              <input required type = "text" placeholder = "game_id" name = "games[_id]">
             </form>
           </section>
         </div>
@@ -76,7 +76,7 @@
           <div class="col-6">X</div>
           <div class="col-6">O</div>
         </div>
-          <div id="tic" class="row">
+          <div id="game-board" class="row">
             <div id="c1" class="col-4" data-cell-index='0'></div>
             <div id="c2" class="col-4" data-cell-index='1'></div>
             <div id="c3" class="col-4" data-cell-index='2'></div>

@@ -1,5 +1,7 @@
 'use strict'
 const store = require('./store')
+let currentPlayer = "X"
+
 
 const signUpSuccess = function(response) {
   console.log(response)
@@ -40,8 +42,11 @@ const signOutFailure = function() {
 const createGameSuccess = function(data) {
   $('#message').text(`new game initiated, good luck!`)
   $('form').trigger('reset')
+  $('#game-board').show()
   console.log(data)
   store.game = data.game
+  store.turnCount = 1
+  console.log(store.turnCount)
 }
 const createGameFailure = function() {
   $('#message').text(`create game failed`)
@@ -61,15 +66,26 @@ const indexGameSuccess = function(response) {
 const indexGameFailure = function() {
   $('#message').text('Index failed!')
 }
-const showGameSuccess = function(data) {
-  console.log(data)
-  const gameHTML = (`
-    <h4>Title: ${data.game._id},
-    <p>Cells</p> ${data.game.cells}`)
-    $('#game-display').html(gameHTML)
+const showGameSuccess = function(response) {
+  let game = response.game[0]
+  let gameHTML = `<h4>cells: ${game.cells}`
+  $('#game-content').html(gameHTML)
+  $('form').trigger('reset')
 }
 const showGameFailure = function() {
   $('#message').text('show game failed!')
+}
+const updateGameSuccess = function(event) {
+  $(event.target).html(currentPlayer)
+  if(currentPlayer==="X"){
+    currentPlayer="O"
+  } else {
+    currentPlayer="X"
+  }
+}
+
+const updateGameFailure = function() {
+  $('#message').text('update failed :(')
 }
 
 module.exports = {
@@ -86,6 +102,7 @@ module.exports = {
   indexGameSuccess,
   indexGameFailure,
   showGameSuccess,
-  showGameFailure
-
+  showGameFailure,
+  updateGameSuccess,
+  updateGameFailure
 }
