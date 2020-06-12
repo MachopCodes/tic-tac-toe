@@ -56,12 +56,11 @@ const signOutFailure = function() {
   $('form').trigger('reset')
 }
 const createGameSuccess = function(data) {
-  $('#message').text(`new game initiated, good luck!`)
+  $('#message').text(`Good luck!`)
   $('form').trigger('reset')
   $('.container').show()
   $('.box').html('')
   $('#game-content').html('')
-  console.log(data)
   store.game = data.game
 }
 const createGameFailure = function() {
@@ -69,7 +68,6 @@ const createGameFailure = function() {
   $('form').trigger('reset')
 }
 const indexGameSuccess = function(response) {
-  console.log(response.games)
   let data = response.games
   let gameHtml = ''
   data.forEach(game => {
@@ -77,6 +75,7 @@ const indexGameSuccess = function(response) {
       <h4>id: ${game._id}</h4>`)
       gameHtml += oneGame
   })
+  $('#message').text("game history")
   $('#game-content').html(gameHtml)
 }
 const indexGameFailure = function() {
@@ -104,7 +103,6 @@ const updateGameSuccess = function(event, currentPlayer, i, gameOver, winner) {
     $('#game-content').text("invalid!")
   }
 }
-
 const updateGameFailure = function() {
   $('#message').text('update failed :(')
 }

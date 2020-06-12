@@ -41,13 +41,11 @@ const onSignOut = function(event) {
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
-
 const onNewGame = function(event) {
   event.preventDefault()
   currentPlayer = "X"
   gameOver = false
   winner = ""
-
   const data = getFormFields(event.target)
   api.userCreateGame(data)
     .then(ui.createGameSuccess)
@@ -144,5 +142,5 @@ module.exports = {
   onGameReset,
   currentPlayer,
   gameOver,
-  winner
+  winner,
 }
