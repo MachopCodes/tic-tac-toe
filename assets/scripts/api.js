@@ -11,14 +11,14 @@ const addUser = function(data){
     data
   })
 }
-const signUserIn = function(data) {
+const signUserIn = (data) => {
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/sign-in',
     data
   })
 }
-const userChangePass = function(data) {
+const userChangePass = (data) => {
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/change-password',
@@ -28,7 +28,7 @@ const userChangePass = function(data) {
     data
   })
 }
-const userSignOut = function(data) {
+const userSignOut = (data) => {
   return $.ajax({
     method: 'DELETE',
     url: config.apiUrl + '/sign-out',
@@ -38,7 +38,7 @@ const userSignOut = function(data) {
   })
 }
 
-const userCreateGame = function(data){
+const userCreateGame = (data) => {
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'POST',
@@ -48,7 +48,7 @@ const userCreateGame = function(data){
     data
   })
 }
-const userIndexGame = function(data) {
+const userIndexGame = (data) => {
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'GET',
@@ -58,7 +58,7 @@ const userIndexGame = function(data) {
     data
   })
 }
-const userShowGame = function(data) {
+const userShowGame = (data) => {
   return $.ajax({
     url: config.apiUrl + '/games/' + data.games._id,
     method: 'GET',
@@ -67,7 +67,7 @@ const userShowGame = function(data) {
     }
   })
 }
-const userUpdateGame = function(i, currentPlayer) {
+const userUpdateGame = (i, currentPlayer) => {
   return $.ajax({
     url: config.apiUrl + "/games/" + store.game._id,
     method: 'PATCH',
@@ -85,15 +85,15 @@ const userUpdateGame = function(i, currentPlayer) {
     }
   })
 }
-const userResetGame = function(data) {
-  return $.ajax({
-    url: config.apiUrl + "/games/" + store.game._id,
-    method: 'DELETE',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
-  })
-}
+// const userDeleteGame = function(data) {
+//   return $.ajax({
+//     url: config.apiUrl + "/games/" + store.game._id,
+//     method: 'DELETE',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     }
+//   })
+// }
 
 module.exports = {
   addUser,
@@ -104,5 +104,4 @@ module.exports = {
   userIndexGame,
   userShowGame,
   userUpdateGame,
-  userResetGame
 }

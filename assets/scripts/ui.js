@@ -8,7 +8,7 @@ const signUpSuccess = function(response) {
   $('#message').text('Signed up successfully ' + response.user.email)
   $('form').trigger('reset')
 }
-const signUpFailure = function() {
+const signUpFailure = function(response) {
   console.log(response)
   $('#message').text('Sign up failed')
   $('form').trigger('reset')
@@ -18,15 +18,8 @@ const signInSuccess = function(response) {
   $('#message').text(`Welcome ${response.user.email}!!`)
   store.user = response.user
   $('form').trigger('reset')
-  $('#sign-out').show()
-  $('#new-game').show()
-  $('#index-games').show()
-  $('#show-games').show()
-  $('#change-password').show()
-  $('#reset').show()
-  $('#sign-in').hide()
-  $('#signup').hide()
-
+  $('.auth').show()
+  $('.unauth').hide()
 }
 const signInFailure = function() {
   $('#message').text('Login failed :(')
@@ -43,13 +36,9 @@ const changeFailure = function() {
 const signOutSuccess = function() {
   $('#message').text(`see you later!`)
   $('form').trigger('reset')
-  $('#sign-out').hide()
-  $('#new-game').hide()
-  $('#index-games').hide()
-  $('#show-games').hide()
-  $('#change-password').hide()
-  $('#sign-in').show()
-  $('#signup').show()
+  $('.auth').hide()
+  $('.unauth').show()
+  $('.board').hide()
 }
 const signOutFailure = function() {
   $('#message').text(`sign out failed`)
@@ -58,7 +47,7 @@ const signOutFailure = function() {
 const createGameSuccess = function(data) {
   $('#message').text(`Good luck!`)
   $('form').trigger('reset')
-  $('.container').show()
+  $('.board').show()
   $('.box').html('')
   $('#game-content').html('')
   store.game = data.game
