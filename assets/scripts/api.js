@@ -37,7 +37,6 @@ const userSignOut = (data) => {
     }
   })
 }
-
 const userCreateGame = (data) => {
   return $.ajax({
     url: config.apiUrl + '/games',
@@ -58,15 +57,6 @@ const userIndexGame = (data) => {
     data
   })
 }
-const userShowGame = (data) => {
-  return $.ajax({
-    url: config.apiUrl + '/games/' + data.games._id,
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
-  })
-}
 const userUpdateGame = (i, currentPlayer) => {
   return $.ajax({
     url: config.apiUrl + "/games/" + store.game._id,
@@ -85,6 +75,18 @@ const userUpdateGame = (i, currentPlayer) => {
     }
   })
 }
+
+module.exports = {
+  addUser,
+  signUserIn,
+  userChangePass,
+  userSignOut,
+  userCreateGame,
+  userIndexGame,
+  userUpdateGame
+}
+
+
 // const userDeleteGame = function(data) {
 //   return $.ajax({
 //     url: config.apiUrl + "/games/" + store.game._id,
@@ -94,14 +96,12 @@ const userUpdateGame = (i, currentPlayer) => {
 //     }
 //   })
 // }
-
-module.exports = {
-  addUser,
-  signUserIn,
-  userChangePass,
-  userSignOut,
-  userCreateGame,
-  userIndexGame,
-  userShowGame,
-  userUpdateGame,
-}
+// const userShowGame = (data) => {
+//   return $.ajax({
+//     url: config.apiUrl + '/games/' + data.games._id,
+//     method: 'GET',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     }
+//   })
+// }

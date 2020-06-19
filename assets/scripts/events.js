@@ -59,14 +59,7 @@ const onIndexGame = function(event) {
     .then(ui.indexGameSuccess)
     .catch(ui.indexGameFailure)
 }
-const onShowGame = function(event) {
-  event.preventDefault()
-  const data = getFormFields(event.target)
-  console.log(data)
-  api.userShowGame(data)
-    .then(ui.showGameSuccess)
-    .catch(ui.showGameFailure)
-}
+
 const onGameUpdate = function(event) {
   event.preventDefault()
   let i = $(event.target).attr("data-cell-index")
@@ -103,7 +96,6 @@ const turnChecker = function(i) {
     console.log("invalid move")
   }
 }
-
 const gameChecker = function(i) {
   console.log(store.game.cells[i])
   if( store.game.cells[i]===store.game.cells[0] && store.game.cells[0]===store.game.cells[1] && store.game.cells[1]===store.game.cells[2] || store.game.cells[i]===store.game.cells[3] && store.game.cells[3]===store.game.cells[4] && store.game.cells[4]===store.game.cells[5] || store.game.cells[i]===store.game.cells[6] && store.game.cells[6]===store.game.cells[7] && store.game.cells[7]===store.game.cells[8] || store.game.cells[i]===store.game.cells[0] && store.game.cells[0]===store.game.cells[4] && store.game.cells[4]===store.game.cells[8] || store.game.cells[i]===store.game.cells[2] && store.game.cells[2]===store.game.cells[4] && store.game.cells[4]===store.game.cells[6] || store.game.cells[i]===store.game.cells[0] && store.game.cells[0]===store.game.cells[3] && store.game.cells[3]===store.game.cells[6] || store.game.cells[i]===store.game.cells[1] && store.game.cells[1]===store.game.cells[4] && store.game.cells[4]===store.game.cells[7] || store.game.cells[i]===store.game.cells[2] && store.game.cells[2]===store.game.cells[5] && store.game.cells[5]===store.game.cells[8] ) {
@@ -137,10 +129,18 @@ module.exports = {
   onSignIn,
   onNewGame,
   onIndexGame,
-  onShowGame,
   onGameUpdate,
   onGameReset,
   currentPlayer,
   gameOver,
-  winner,
+  winner
 }
+
+// const onShowGame = function(event) {
+//   event.preventDefault()
+//   const data = getFormFields(event.target)
+//   console.log(data)
+//   api.userShowGame(data)
+//     .then(ui.showGameSuccess)
+//     .catch(ui.showGameFailure)
+// }

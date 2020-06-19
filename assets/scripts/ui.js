@@ -49,7 +49,7 @@ const createGameSuccess = function(data) {
   $('form').trigger('reset')
   $('.board').show()
   $('.box').html('')
-  $('#game-content').html('')
+  $('#game-content').html("You're up X!!")
   store.game = data.game
 }
 const createGameFailure = function() {
@@ -58,26 +58,20 @@ const createGameFailure = function() {
 }
 const indexGameSuccess = function(response) {
   let data = response.games
-  let gameHtml = ''
-  data.forEach(game => {
-    const oneGame = (`
-      <h4>id: ${game._id}</h4>`)
-      gameHtml += oneGame
-  })
-  $('#message').text("game history")
-  $('#game-content').html(gameHtml)
+  let gameCount = data.length
+  //
+  // })
+  // let gameHtml = ''
+  // data.forEach(game => {
+  //   const oneGame = (`
+  //     <h4>id: ${game._id}</h4>`)
+  //     gameHtml += oneGame
+  // })
+  $('#message').text(`total games played: ${gameCount}`)
+  $('#game-content').html("Boo Yah!!")
 }
 const indexGameFailure = function() {
   $('#message').text('Index failed!')
-}
-const showGameSuccess = function(response) {
-  let game = response.game[0]
-  let gameHTML = `<h4>cells: ${game.cells}`
-  $('#game-content').html(gameHTML)
-  $('form').trigger('reset')
-}
-const showGameFailure = function() {
-  $('#message').text('show game failed!')
 }
 const updateGameSuccess = function(event, currentPlayer, i, gameOver, winner) {
   if($(event.target).html()==="" && !gameOver){
@@ -95,13 +89,7 @@ const updateGameSuccess = function(event, currentPlayer, i, gameOver, winner) {
 const updateGameFailure = function() {
   $('#message').text('update failed :(')
 }
-const resetGameSuccess = function() {
-  $('#message').text('game reset')
-  $('.box').html('')
-}
-const resetGameFailure = function() {
-  $('#message').text('game reset failure')
-}
+
 
 module.exports = {
   signOutSuccess,
@@ -116,10 +104,24 @@ module.exports = {
   createGameFailure,
   indexGameSuccess,
   indexGameFailure,
-  showGameSuccess,
-  showGameFailure,
   updateGameSuccess,
-  updateGameFailure,
-  resetGameSuccess,
-  resetGameFailure
+  updateGameFailure
 }
+
+
+// const showGameSuccess = function(response) {
+//   let game = response.game[0]
+//   let gameHTML = `<h4>cells: ${game.cells}`
+//   $('#game-content').html(gameHTML)
+//   $('form').trigger('reset')
+// }
+// const showGameFailure = function() {
+//   $('#message').text('show game failed!')
+// }
+// const resetGameSuccess = function() {
+//   $('#message').text('game reset')
+//   $('.box').html('')
+// }
+// const resetGameFailure = function() {
+//   $('#message').text('game reset failure')
+// }
