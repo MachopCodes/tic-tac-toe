@@ -30,7 +30,19 @@ events.js also holds game logic scripting.
 api.js holds the details of the ajax reqeusts 
 ui.js holds the details of the ajax success & failure messages. 
 
-the game logic 
+Initial planning for the game logic was outlined in process flow chart.PNG, but when actually coding the logic the flow chart did not include the full detail needed to script the code. 
+
+Generally the game update function is set up with a few things happening:
+1. prevent the default
+2. Every game board cell has an array index from 0 - 8 for the 9 board squares, set this targeted number to "i"
+3. Pass i to a turn swap function (turnChecker) and change current player
+4. Pass i to a game-over check function (gameChecker) and set game over to true or false based on criteria
+5. Send the index, game over and current player to the Ajax reqeust
+6. send that info to the game board update (on success)
+
+
+
+
 
 JS Functionality (per process flow below)
 image - build the gameboard in JS - have it console log / return the interactions.
