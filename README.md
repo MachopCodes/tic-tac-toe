@@ -1,26 +1,14 @@
-This program allows a user to play tic-tac-toe on a stylish aqua game board!
+Play classic tic-tac-toe with a friend on a stylish game board! 
+Sign up and sign in with a username & password to play and track your stats. 
 
-The user has the ability to register a username and password with the program and have that information stored in the program's cache, so that a player can sign-in and sign-out using this username to play games, and track their game history. 
+Technologies used in this program are: HTML, CSS & javaScript.
 
-Every time a user presses "New Game", the previous game is stored in game history and the board is reset.
-
-
-
+Planning for this program included mapping client to server interactions and game logic.
 
 
-Planning for this program included mapping API functionalities, seperated by authentication events and game events.
-
----AUTHENTICATION EVENT AJAX REQUESTS---
-sign-up/sign-in: POST
-change password: PATCH
-sign out: DELETE
----GAME EVENT AJAX REQUESTS---
-create game: POST
-index games/game stats: GET
-update gameboard: PATCH
 
 ---HTML---
-ize the game-board, and styling is kept in the index.scss file. The HTML is seperated into 2 sections, home and board. Home includes the authorized and unauthorized events, organized by classes that can be shown and hidden on the appropriate event handlers, and game board is the actual board which utilizes bootstrap to auto-size. 
+The HTML is seperated into 2 sections, home and board. Home includes the authorized and unauthorized events, organized by classes that can be shown and hidden on the appropriate event handlers, and game board is the actual board which utilizes bootstrap to auto-size. 
 
 Scripting is kept in 5 files: 
 
@@ -29,6 +17,16 @@ events.js holds the formatting of inputs, and what will be done with that data, 
 events.js also holds game logic scripting. 
 api.js holds the details of the ajax reqeusts 
 ui.js holds the details of the ajax success & failure messages. 
+
+Authentication client / server requests
+sign-up/sign-in: POST
+change password: PATCH
+sign out: DELETE
+
+Game event client / server reqeusts
+create game: POST
+index games/game stats: GET
+update gameboard: PATCH
 
 Initial planning for the game logic was outlined in process flow chart.PNG, but when actually coding the logic the flow chart did not include the full detail needed to script the code. 
 
