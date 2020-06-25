@@ -28,10 +28,12 @@ Enjoy!
   - Commits were done after every day of coding. 
   - In future projects, commits will be done more frequently / at every success for a better trail. 
 
--Additional Features-
-  - Win ticker displaying total wins and when clicked goes to game history.
+-Unsolved Problems and Additional Features-
+  - Ability to display total wins and looses.
   - Auto sign up / sign in. 
   - Custom game pieces.
+  - AI to play against.
   - Animations on the game board.
+  
 
 
