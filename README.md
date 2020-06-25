@@ -1,8 +1,3 @@
-Play classic tic-tac-toe with a friend on a stylish game board! 
-Sign up and sign in with a username & password to play and track your stats. 
-Enjoy!
-
-
 - Technologies used - 
   - HTML 
   - CSS 
