@@ -1,12 +1,6 @@
 Play classic tic-tac-toe with a friend on a stylish game board made with HTML, CSS and javaScript.  Sign up and sign in with a username & password to play and track your stats.  [Enjoy!](https://machopcodes.github.io/tic-tac-toe/)
 
 
--Modular Planning-
-  - app.js holds event handlers
-  - events.js holds formatting and routing of input data fromm app.js and game logic
-  - api.js holds client server fucntionality 
-  - ui.js holds functions that effect the html. 
-
 
 -User Stories-
   - I want to be able to log in with a unique account.
@@ -14,6 +8,13 @@ Play classic tic-tac-toe with a friend on a stylish game board made with HTML, C
   - I want to interact with the game board.
   - I want to be able to restart a game.
   - I want the game to indicate who's turn it is and winners. `
+
+
+-Modularity-
+  - app.js holds event handlers
+  - events.js holds formatting and routing of input data fromm app.js and game logic
+  - api.js holds client server fucntionality 
+  - ui.js holds functions that effect the html. 
 
 
 -Version Control-
