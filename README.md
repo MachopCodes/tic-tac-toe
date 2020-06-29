@@ -11,6 +11,7 @@ Enjoy!
   - game logic (process flow chart.PNG).
   - wireframing
   ![alt text](https://github.com/MachopCodes/tic-tac-toe/blob/master/Wireframe%20Auth.PNG "Logo Authorization Screen")
+  ![alt text](https://github.com/MachopCodes/tic-tac-toe/blob/master/Wireframe%20Unauth.PNG "Logo Unauthorized Screen")
   
   (Wireframe Auth.PNG & Wireframe Unauth.PNG).
 
