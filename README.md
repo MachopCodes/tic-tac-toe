@@ -7,13 +7,12 @@ Enjoy!
   - CSS 
   - javaScript.
 
--Initial Planning-
-  - game logic (process flow chart.PNG).
-  - wireframing
+-Game Logic-
+  ![alt text](https://github.com/MachopCodes/tic-tac-toe/blob/master/process%20flow%20chart.PNG "Logo Process flow chart")
+-Wireframing-
   ![alt text](https://github.com/MachopCodes/tic-tac-toe/blob/master/Wireframe%20Auth.PNG "Logo Authorization Screen")
   ![alt text](https://github.com/MachopCodes/tic-tac-toe/blob/master/Wireframe%20Unauth.PNG "Logo Unauthorized Screen")
   
-  (Wireframe Auth.PNG & Wireframe Unauth.PNG).
 
 -Modular Planning-
   - app.js holds event handlers
