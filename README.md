@@ -1,24 +1,5 @@
-Play classic tic-tac-toe with a friend on a stylish game board! 
-Sign up and sign in with a username & password to play and track your stats. 
+Play classic tic-tac-toe with a friend on a stylish game board made with HTML, CSS and javaScript.  Sign up and sign in with a username & password to play and track your stats.  [Enjoy!](https://machopcodes.github.io/tic-tac-toe/)
 
-[Enjoy!](https://machopcodes.github.io/tic-tac-toe/)
-
-
--Technologies used: HTML; CSS; javaScript.
-
-
--Game Logic-
-
-
-  ![alt text](https://github.com/MachopCodes/tic-tac-toe/blob/master/process%20flow%20chart.PNG "Logo Process flow chart")
-  
-  
--Wireframing-
-
-
-  ![alt text](https://github.com/MachopCodes/tic-tac-toe/blob/master/Wireframe%20Auth.PNG "Logo Authorization Screen")
-  ![alt text](https://github.com/MachopCodes/tic-tac-toe/blob/master/Wireframe%20Unauth.PNG "Logo Unauthorized Screen")
-  
 
 -Modular Planning-
   - app.js holds event handlers
@@ -45,6 +26,21 @@ Sign up and sign in with a username & password to play and track your stats.
   - Custom game pieces.
   - AI to play against.
   - Animations on the game board.
+
+
+-Game Logic-
+
+
+  ![alt text](https://github.com/MachopCodes/tic-tac-toe/blob/master/process%20flow%20chart.PNG "Logo Process flow chart")
+  
+  
+-Wireframing-
+
+
+  ![alt text](https://github.com/MachopCodes/tic-tac-toe/blob/master/Wireframe%20Auth.PNG "Logo Authorization Screen")
+  ![alt text](https://github.com/MachopCodes/tic-tac-toe/blob/master/Wireframe%20Unauth.PNG "Logo Unauthorized Screen")
+  
+
   
 
 
