@@ -9,7 +9,10 @@ Enjoy!
 
 -Initial Planning-
   - game logic (process flow chart.PNG).
-  - wireframing (Wireframe Auth.PNG & Wireframe Unauth.PNG).
+  - wireframing
+  ![alt text](https://github.com/MachopCodes/tic-tac-toe/blob/master/Wireframe%20Auth.PNG "Logo Authorization Screen")
+  
+  (Wireframe Auth.PNG & Wireframe Unauth.PNG).
 
 -Modular Planning-
   - app.js holds event handlers
