@@ -2,14 +2,19 @@ Play classic tic-tac-toe with a friend on a stylish game board!
 Sign up and sign in with a username & password to play and track your stats. 
 Enjoy!
 
--Technologies used- 
-  - HTML 
-  - CSS 
-  - javaScript.
+
+-Technologies used: HTML; CSS; javaScript.
+
 
 -Game Logic-
+
+
   ![alt text](https://github.com/MachopCodes/tic-tac-toe/blob/master/process%20flow%20chart.PNG "Logo Process flow chart")
+  
+  
 -Wireframing-
+
+
   ![alt text](https://github.com/MachopCodes/tic-tac-toe/blob/master/Wireframe%20Auth.PNG "Logo Authorization Screen")
   ![alt text](https://github.com/MachopCodes/tic-tac-toe/blob/master/Wireframe%20Unauth.PNG "Logo Unauthorized Screen")
   
@@ -20,6 +25,7 @@ Enjoy!
   - api.js holds client server fucntionality 
   - ui.js holds functions that effect the html. 
 
+
 -User Stories-
   - I want to be able to log in with a unique account.
   - i want to store my game history. 
@@ -27,9 +33,10 @@ Enjoy!
   - I want to be able to restart a game.
   - I want the game to indicate who's turn it is and winners. `
 
+
 -Version Control-
   - Commits were done after every day of coding. 
-  - In future projects, commits will be done more frequently / at every success for a better trail. 
+  - In future projects, commits will be executed at every success milestone. 
 
 -Unsolved Problems and Additional Features-
   - Ability to display total wins and looses.
