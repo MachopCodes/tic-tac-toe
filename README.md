@@ -1,6 +1,15 @@
 Play classic tic-tac-toe with a friend on a stylish game board made with HTML, CSS and javaScript.  Sign up and sign in with a username & password to play and track your stats.  [Enjoy!](https://machopcodes.github.io/tic-tac-toe/)
 
-
+-Technologies Used-
+JavaScript
+jQuery
+HTML
+Bootstrap
+Flexbox
+CSS
+Sass
+Bash
+curl
 
 -User Stories-
   - I want to be able to log in with a unique account.
